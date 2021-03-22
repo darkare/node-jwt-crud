@@ -20,7 +20,7 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
         console.log('hash',hash);
         console.log(passwordFields[0], passwordFields[1]);
         if (hash === passwordFields[1]) {
-            delete foundUser.password;
+            //delete foundUser.password;
             req.body = foundUser;
             
             console.log('next');

@@ -6,9 +6,17 @@ exports.routesConfig = (app) => {
   app.get("/users", [
     validationMiddleware.validJWTNeeded,
     userController.listUsers,
+  ]); 
+  app.get("/users/:userId", [
+    validationMiddleware.validJWTNeeded,
+    userController.getById,
   ]);
-
-  app.get("/users/:userId", [userController.getById]);
-  app.put("/users/:userId", [userController.updateById]);
-  app.delete("/users/:userId", [userController.deleteUser]);
+  app.put("/users/:userId", [
+    validationMiddleware.validJWTNeeded,
+    userController.updateById,
+  ]);
+  app.delete("/users/:userId", [
+    validationMiddleware.validJWTNeeded,
+    userController.deleteUser,
+  ]);
 };
